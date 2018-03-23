@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team_id: 
+  taste: 9.99
+  meal_planning: 9.99
+  presentation: 9.99
+  creativity: 9.99
+  kitchen_cleanliness: 9.99
+
+two:
+  team_id: 
+  taste: 9.99
+  meal_planning: 9.99
+  presentation: 9.99
+  creativity: 9.99
+  kitchen_cleanliness: 9.99
