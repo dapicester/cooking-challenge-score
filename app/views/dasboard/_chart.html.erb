@@ -1,0 +1,42 @@
+<div style="height: 500px; width: 500px;">
+  <canvas id="chart"></canvas>
+</div>
+
+<% content_for :chart_js do %>
+  <script id="chart-data" type="application/json">
+  <%=raw @data.to_json %>
+  </script>
+
+  <script>
+  var canvas = document.getElementById('chart'); 
+  var data = document.getElementById('chart-data');
+  var chart = new Chart(canvas, {
+    type: 'radar',
+    data: JSON.parse(data.innerHTML),
+    options:{
+      tooltips: {
+        callbacks: {
+          label: function(item, data) {
+            var dataset = data.datasets[item.datasetIndex];
+            var label = dataset.label;
+            var value = dataset.data[item.index];
+            var maxValue = data.meta.maxValues[item.index];
+            var scaleFactor = data.meta.scaleFactors[item.index];
+            var scaled = value / scaleFactor;
+            return label + ': ' + scaled.toFixed(1) + ' out of ' + maxValue; 
+          }
+        }
+      },
+      scale: {
+        ticks: {
+          callback: function() { return 'foo'; },
+          display: false,
+          beginAtZero: true,
+          min: 0,
+          suggestedMax: 6,
+        }
+      }
+    }
+  });
+  </script>
+<% end %>
