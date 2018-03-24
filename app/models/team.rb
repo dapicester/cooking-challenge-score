@@ -17,6 +17,7 @@ class Team < ApplicationRecord
   def final_vote_data
     {
       label: name,
+      borderColor: "##{color}",
       data: final_vote.record.rescaled
     }
   end
