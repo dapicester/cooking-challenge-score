@@ -25,4 +25,16 @@ class Team < ApplicationRecord
   def score
     final_vote.record.to_a.reduce(:+)
   end
+
+  rails_admin do
+    configure :color, :color
+    configure :score
+    include_fields :name, :color, :score
+    edit do
+      exclude_fields :score
+    end
+    modal do
+      exclude_fields :score
+    end
+  end
 end

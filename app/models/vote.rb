@@ -37,4 +37,8 @@ class Vote < ApplicationRecord
     values = attributes.values_at(*ATTR_NAMES.map(&:to_s))
     Record.new(*values)
   end
+
+  rails_admin do
+     exclude_fields :id, :created_at, :updated_at
+  end
 end
