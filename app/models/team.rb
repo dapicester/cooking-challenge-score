@@ -3,7 +3,7 @@ class Team < ApplicationRecord
 
   validates :name, presence: true
 
-  def score
+  def final_vote
     avg = ->(col) { "AVG(#{col}) as #{col}" }
     votes.select(
       avg[:taste],
@@ -12,5 +12,16 @@ class Team < ApplicationRecord
       avg[:creativity],
       avg[:kitchen_cleanliness]
     ).first
+  end
+
+  def final_vote_data
+    {
+      label: name,
+      data: final_vote.record.rescaled
+    }
+  end
+
+  def score
+    final_vote.record.to_a.reduce(:+)
   end
 end

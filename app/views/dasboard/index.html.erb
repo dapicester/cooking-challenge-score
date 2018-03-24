@@ -1,0 +1,48 @@
+<h1>Cooking Challenge</h1>
+<h2>Scores</h2>
+
+<ol>
+  <% @teams.sort_by(&:score).reverse.each do |team| %>
+    <li><%= team.name %>: <%= team.score %></li>
+  <% end %>
+</ol>
+<canvas id="chart" width="400" height="400"></canvas>
+
+<% content_for :chart_js do %>
+<script id="chart-data" type="application/json">
+<%=raw @data.to_json %>
+</script>
+
+<script>
+var canvas = document.getElementById('chart'); 
+var data = document.getElementById('chart-data');
+var chart = new Chart(canvas, {
+  type: 'radar',
+  data: JSON.parse(data.innerHTML),
+  options:{
+    tooltips: {
+      callbacks: {
+        label: function(item, data) {
+          var dataset = data.datasets[item.datasetIndex];
+          var label = dataset.label;
+          var value = dataset.data[item.index];
+          var maxValue = data.meta.maxValues[item.index];
+          var scaleFactor = data.meta.scaleFactors[item.index];
+          var scaled = value / scaleFactor;
+          return label + ': ' + scaled + ' out of ' + maxValue; 
+        }
+      }
+    },
+    scale: {
+      ticks: {
+        callback: function() { return 'foo'; },
+        display: false,
+        beginAtZero: true,
+        min: 0,
+        suggestedMax: 6,
+      }
+    }
+  }
+});
+</script>
+<% end %>
