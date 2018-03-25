@@ -12,7 +12,7 @@ class Team < ApplicationRecord
       avg[:presentation],
       avg[:creativity],
       avg[:kitchen_cleanliness]
-    ).first
+    ).group(:id).first # Postgresql requires the explicit GROUP BY id
   end
 
   def final_vote_data
