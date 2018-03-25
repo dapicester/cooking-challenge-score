@@ -11,6 +11,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Team</th>
+        <th scope="col">Description</th>
         <th scope="col">Score</th>
       </tr>
     </thead>
@@ -19,6 +20,7 @@
         <tr>
           <th scope="row"><%= index + 1 %>
           <td><%= team.name %></td>
+          <td><%= truncate team.description, separator: ' ' %>
           <td><%= team.score %></td>
         </tr>
       <% end %>

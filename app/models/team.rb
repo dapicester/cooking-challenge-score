@@ -26,7 +26,7 @@ class Team < ApplicationRecord
   rails_admin do
     configure :color, :color
     configure :score
-    include_fields :name, :color, :score
+    include_fields :name, :description, :color, :score
     edit do
       exclude_fields :score
     end
