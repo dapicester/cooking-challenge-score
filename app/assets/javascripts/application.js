@@ -15,5 +15,5 @@
 //= require Chart.bundle
 //= require chartkick
 //= require jquery/dist/jquery
-//= require bootstrap/dist/js/bootstrap
+//= require bootstrap/dist/js/bootstrap.bundle
 //= require_tree .

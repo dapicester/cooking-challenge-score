@@ -20,7 +20,7 @@
         <tr>
           <th scope="row"><%= index + 1 %>
           <td><%= team.name %></td>
-          <td><%= truncate team.description, separator: ' ' %>
+	  <td data-toggle="tooltip" title="<%= team.description %>"><%= truncate team.description, separator: ' ' %>
           <td><%= team.score %></td>
         </tr>
       <% end %>
