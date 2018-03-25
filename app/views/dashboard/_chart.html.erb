@@ -24,6 +24,10 @@
             var scaleFactor = data.meta.scaleFactors[item.index];
             var scaled = value / scaleFactor;
             return label + ': ' + scaled.toFixed(1) + ' out of ' + maxValue; 
+          },
+          labelColor: function(item, chart) {
+            var color = chart.config.data.datasets[item.datasetIndex].borderColor;
+            return { backgroundColor: color };
           }
         }
       },
