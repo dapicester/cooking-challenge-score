@@ -2,7 +2,7 @@ RailsAdmin.config do |config|
 
   config.authenticate_with do
     authenticate_or_request_with_http_basic('Login require') do |username, password|
-      username == 'sidechef' && password == 'iwanttowin'
+      username == ENV.fetch('AUTH_USER') && password == ENV.fetch('AUTH_PASS')
     end
   end
 
