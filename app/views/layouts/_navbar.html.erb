@@ -1,0 +1,11 @@
+<nav class="navbar fixed-top navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">
+		Cooking Challenge
+		<small><%= yield :page_title %></small>
+	</a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <%= link_to 'Manage data', rails_admin.dashboard_path, class: 'nav-link', target: '_blank' %>
+    </li>
+  </ul> 
+</nav>

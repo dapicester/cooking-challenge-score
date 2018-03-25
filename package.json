@@ -2,7 +2,9 @@
   "name": "cooking-challenge",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.0.0",
     "chart.js": "^2.7.2",
-    "chartkick": "^2.3.3"
+    "chartkick": "^2.3.3",
+    "jquery": "^3.3.1"
   }
 }

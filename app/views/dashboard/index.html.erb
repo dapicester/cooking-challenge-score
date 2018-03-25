@@ -1,20 +1,34 @@
-<h1>Cooking Challenge</h1>
-<h2>Scores</h2>
+<% provide :page_title, 'Scores' %>
 
-<p>
 <% if no_data? %>
-  No data available yet.
+  <div class="alert alert-warning" role="alert">
+	  No data available yet.
+  </div>
 <% else %>
-  <ol>
-    <% @teams.sort_by(&:score).reverse.each do |team| %>
-      <li><%= team.name %>: <%= team.score %></li>
-    <% end %>
-  </ol>
+  <table class="table table-striped table-hover">
+    <caption hidden>Ranks</caption>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Team</th>
+        <th scope="col">Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @teams.sort_by(&:score).reverse.each.with_index do |team, index| %>
+        <tr>
+          <th scope="row"><%= index + 1 %>
+          <td><%= team.name %></td>
+          <td><%= team.score %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
-</p>
 
-<p>
-  <%= link_to 'Manage data', rails_admin.dashboard_path %>
-</p>
+<div>
+</div>
 
-<%= render 'chart' unless no_data? %>
+<div>
+  <%= render 'chart' unless no_data? %>
+</div>

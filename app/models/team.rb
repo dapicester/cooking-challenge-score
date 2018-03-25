@@ -4,6 +4,7 @@ class Team < ApplicationRecord
   validates :name, presence: true
 
   def final_vote
+    # TODO: cache
     avg = ->(col) { "AVG(#{col}) as #{col}" }
     votes.select(
       avg[:taste],
