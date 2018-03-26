@@ -28,6 +28,10 @@ class Vote < ApplicationRecord
   SCALE_FACTORS = [2, 2, 3, 6, 6]
 
   Record = Struct.new(*ATTR_NAMES) do
+    def initialize(taste = 0, meal_planning = 0, presentation = 0, creativity = 0, kitchen_cleanliness = 0)
+      super
+    end
+
     def rescaled
       self.to_a.zip(SCALE_FACTORS).map { |val, k| val * k }
     end
